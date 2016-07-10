@@ -1,2 +1,2 @@
-# problem-dev-kit
-Lightweight open-source .NET framework for mathematical problem formalization
+# Problem Development Kit
+Lightweight open-source .NET library for mathematical problem formalization
