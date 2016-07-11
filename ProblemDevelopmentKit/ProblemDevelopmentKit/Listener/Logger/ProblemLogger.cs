@@ -2,8 +2,8 @@
 {
     /// <summary>
     /// Use this class to log information while executing problem.
-    /// </summary>
-    public class SolutionProgressNotifier : Notifier<IProblemLogListener>
+    /// </summary>`
+    public class ProblemLogger : Notifier<IProblemLogListener>
     {
         /// <summary>
         /// Log message.

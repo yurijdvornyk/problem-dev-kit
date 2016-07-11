@@ -58,6 +58,17 @@ namespace ProblemDevelopmentKit.Result.Builder
         }
 
         /// <summary>
+        /// Sets given table as current table.
+        /// </summary>
+        /// <param name="table">Given table.</param>
+        /// <returns></returns>
+        public TableResultBuilder SetCurrentTable(TableResultItem table)
+        {
+            currentTable = table;
+            return this;
+        }
+
+        /// <summary>
         /// Sets title to current table
         /// </summary>
         /// <param name="title">Table's title</param>
@@ -85,6 +96,10 @@ namespace ProblemDevelopmentKit.Result.Builder
         /// <returns></returns>
         public TableResultBuilder AddValue(object value)
         {
+            if (currentTable.Value.Count == 0)
+            {
+                currentTable.Value.Add(new List<object>());
+            }
             currentTable.Value.Last().Add(value);
             return this;
         }
@@ -102,8 +117,23 @@ namespace ProblemDevelopmentKit.Result.Builder
             else
             {
                 tableResult.ResultItems.Add(currentTable);
+                currentTable = null;
                 return this;
             }
+        }
+
+        /// <summary>
+        /// Adds column titles to current table.
+        /// </summary>
+        /// <param name="titles">Column titles.</param>
+        /// <returns></returns>
+        public TableResultBuilder AddColumnTitles(params string[] titles)
+        {
+            foreach (string column in titles)
+            {
+                currentTable.ColumnTitles.Add(column);
+            }
+            return this;
         }
     }
 }

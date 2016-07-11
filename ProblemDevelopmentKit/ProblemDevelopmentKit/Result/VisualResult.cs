@@ -27,16 +27,14 @@ namespace ProblemDevelopmentKit.Result
         /// </summary>
         public List<VisualResultItem> Graphs { get; private set; }
 
-        public VisualResult()
-        {
-            Graphs = new List<VisualResultItem>();
-        }
+        public VisualResult() : this(string.Empty, string.Empty, string.Empty) { }
 
         public VisualResult(string title, string keyTitle, string valueTitle)
         {
             Title = title;
             KeyTitle = keyTitle;
             ValueTitle = valueTitle;
+            Graphs = new List<VisualResultItem>();
         }
     }
 }

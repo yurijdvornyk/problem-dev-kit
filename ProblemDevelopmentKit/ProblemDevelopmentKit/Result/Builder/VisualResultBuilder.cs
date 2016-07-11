@@ -85,6 +85,17 @@ namespace ProblemDevelopmentKit.Result.Builder
         }
 
         /// <summary>
+        /// Sets given graph as current graph.
+        /// </summary>
+        /// <param name="result">Given graph.</param>
+        /// <returns></returns>
+        public VisualResultBuilder SetCurrentResult(VisualResultItem result)
+        {
+            currentResult = result;
+            return this;
+        }
+
+        /// <summary>
         /// Adds current graph to VisualResult. If currentResult == null, throws ArgumentNullException.
         /// </summary>
         /// <returns></returns>
@@ -97,6 +108,7 @@ namespace ProblemDevelopmentKit.Result.Builder
             else
             {
                 visualResult.Graphs.Add(currentResult);
+                currentResult = null;
                 return this;
             }
         }

@@ -44,10 +44,10 @@
     <Compile Include="Listener\IListener.cs" />
     <Compile Include="Listener\Logger\IProblemLogListener.cs" />
     <Compile Include="Listener\Logger\MessageType.cs" />
-    <Compile Include="Listener\Logger\SolutionProgressNotifier.cs" />
+    <Compile Include="Listener\Logger\ProblemLogger.cs" />
     <Compile Include="Listener\Notifier.cs" />
     <Compile Include="Listener\Progress\ISolutionProgressListener.cs" />
-    <Compile Include="Listener\Progress\ProblemProgressNotifier.cs" />
+    <Compile Include="Listener\Progress\SolutionProgressNotifier.cs" />
     <Compile Include="Problem.cs" />
     <Compile Include="ProblemData\DataItemType.cs" />
     <Compile Include="ProblemData\DataItem.cs" />
