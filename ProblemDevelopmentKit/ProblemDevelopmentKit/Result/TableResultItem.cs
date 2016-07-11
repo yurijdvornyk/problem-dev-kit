@@ -68,7 +68,7 @@ namespace ProblemDevelopmentKit.Result
 
             for (int i = 0; i < rows; ++i)
             {
-                for (int j = 0; i < columns; ++j)
+                for (int j = 0; j < columns; ++j)
                 {
                     result[i, j] = value[i][j];
                 }

@@ -5,6 +5,9 @@
     /// </summary>
     public interface IResultItem
     {
+        /// <summary>
+        /// Result item title
+        /// </summary>
         string Title { get; set; }
     }
 }
