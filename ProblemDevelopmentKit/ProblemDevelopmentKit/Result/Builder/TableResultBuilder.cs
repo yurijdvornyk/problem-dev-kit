@@ -54,6 +54,7 @@ namespace ProblemDevelopmentKit.Result.Builder
         public TableResultBuilder NewTable(string title = "")
         {
             currentTable = new TableResultItem(title);
+            tableResult.ResultItems.Add(currentTable);
             return this;
         }
 
@@ -102,24 +103,6 @@ namespace ProblemDevelopmentKit.Result.Builder
             }
             currentTable.Value.Last().Add(value);
             return this;
-        }
-
-        /// <summary>
-        /// Adds current table to TableResult. If currentTable == null, throws ArgumentNullException.
-        /// </summary>
-        /// <returns></returns>
-        public TableResultBuilder AddTableToResult()
-        {
-            if (currentTable == null)
-            {
-                throw new ArgumentNullException("Table is not initialized. Cannot add null value as table.");
-            }
-            else
-            {
-                tableResult.ResultItems.Add(currentTable);
-                currentTable = null;
-                return this;
-            }
         }
 
         /// <summary>

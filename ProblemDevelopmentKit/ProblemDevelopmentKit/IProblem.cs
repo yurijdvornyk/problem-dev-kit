@@ -32,14 +32,14 @@ namespace ProblemDevelopmentKit
         ProblemResult Result { get; }
 
         /// <summary>
-        /// True if input data is set, False in another case.
+        /// True if input data is set, otherwise False.
         /// </summary>
         bool IsInputDataSet { get; }
 
         /// <summary>
-        /// True if the problem with this input data is already executed, False in another case.
+        /// True if the solution process must be stopped, otherwise False.
         /// </summary>
-        bool IsExecuted { get; }
+        bool IsCancellationPending { get; }
 
         /// <summary>
         /// Set input argument to the InputData field and parses it using ParseData method.
@@ -67,5 +67,15 @@ namespace ProblemDevelopmentKit
         /// Wrap Calculate() method and set IsExecuted to True.
         /// </summary>
         ProblemResult Solve();
+
+        /// <summary>
+        /// Solve problem asyncronously.
+        /// </summary>
+        void SolveAsync();
+
+        /// <summary>
+        /// Cancel asynchronous problem solving.
+        /// </summary>
+        void CancelAsyncSolution();
     }
 }

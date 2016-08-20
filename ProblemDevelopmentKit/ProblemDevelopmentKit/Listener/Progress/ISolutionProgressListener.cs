@@ -1,4 +1,4 @@
-﻿using ProblemDevelopmentKit.Listener;
+﻿using System;
 
 namespace ProblemDevelopmentKit.Listener.Progress
 {
@@ -18,5 +18,26 @@ namespace ProblemDevelopmentKit.Listener.Progress
         /// </summary>
         /// <param name="percent">Progress value in percent (between 0 and 100).</param>
         void SetProgress(double percent);
+
+        /// <summary>
+        /// Called when the solution is started.
+        /// </summary>
+        void OnSolutionStarted();
+
+        /// <summary>
+        /// Called when the solution error appears.
+        /// </summary>
+        /// <param name="e">Error.</param>
+        void OnSolutionError(Exception e);
+
+        /// <summary>
+        /// Called when the solution is cancelled.
+        /// </summary>
+        void OnSolutionCancelled();
+
+        /// <summary>
+        /// Called when the solution is completed successfully.
+        /// </summary>
+        void OnSolutionCompleted();        
     }
 }
