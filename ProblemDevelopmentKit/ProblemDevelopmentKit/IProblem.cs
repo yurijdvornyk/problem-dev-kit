@@ -1,6 +1,7 @@
 ﻿using ProblemDevelopmentKit.ProblemData;
 using ProblemDevelopmentKit.Result;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ProblemDevelopmentKit
 {
@@ -61,12 +62,12 @@ namespace ProblemDevelopmentKit
         /// <summary>
         /// Perform solving the problem.
         /// </summary>
-        ProblemResult Execute();
+        ProblemResult Execute(DoWorkEventArgs args);
 
         /// <summary>
         /// Wrap Calculate() method and set IsExecuted to True.
         /// </summary>
-        ProblemResult Solve();
+        ProblemResult Solve(DoWorkEventArgs args);
 
         /// <summary>
         /// Solve problem asyncronously.
@@ -77,5 +78,12 @@ namespace ProblemDevelopmentKit
         /// Cancel asynchronous problem solving.
         /// </summary>
         void CancelAsyncSolution();
+
+        /// <summary>
+        /// Checks if solution process can be continued. Check this before doing some complicated operations.
+        /// </summary>
+        /// <param name="args">DoWorkEventArgs</param>
+        /// <returns>True is the solution progress can be continued, otherwise False.</returns>
+        bool CheckSolutionStatus(DoWorkEventArgs args);
     }
 }

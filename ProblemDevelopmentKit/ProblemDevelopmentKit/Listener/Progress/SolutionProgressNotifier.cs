@@ -31,21 +31,34 @@ namespace ProblemDevelopmentKit.Listener.Progress
             GetListeners().ForEach(listener => listener.SetProgress(percent));
         }
 
+        /// <summary>
+        /// Notify listeners that solution progress started.
+        /// </summary>
         public static void StartSolution()
         {
             GetListeners().ForEach(listener => listener.OnSolutionStarted());
         }
 
+        /// <summary>
+        /// Notify listeners that solution progress completed.
+        /// </summary>
         public static void CompleteSolution()
         {
             GetListeners().ForEach(listener => listener.OnSolutionCompleted());
         }
 
+        /// <summary>
+        /// Notify listeners that solution progress was cancelled.
+        /// </summary>
         public static void CancelSolution()
         {
             GetListeners().ForEach(listener => listener.OnSolutionCancelled());
         }
 
+        /// <summary>
+        /// Notify listeners when solution was interrupted with an exception.
+        /// </summary>
+        /// <param name="e">Exception.</param>
         public static void SolutionError(Exception e)
         {
             GetListeners().ForEach(listener => listener.OnSolutionError(e));

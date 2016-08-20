@@ -68,11 +68,5 @@
         }
 
         #endregion
-
-        /// <summary>
-        /// Set parameter's value.
-        /// </summary>
-        /// <param name="value">Value to be set.</param>
-        public void SetValue(object value) { Value = value; }
     }
 }

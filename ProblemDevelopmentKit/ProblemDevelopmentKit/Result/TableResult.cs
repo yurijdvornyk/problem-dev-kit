@@ -17,8 +17,15 @@ namespace ProblemDevelopmentKit.Result
         /// </summary>
         public List<TableResultItem> ResultItems { get; private set; }
 
+        /// <summary>
+        /// Create new TableResult.
+        /// </summary>
         public TableResult() : this(string.Empty) { }
 
+        /// <summary>
+        /// Create new TableResult with given title.
+        /// </summary>
+        /// <param name="title">TableResult title.</param>
         public TableResult(string title)
         {
             Title = title;

@@ -24,8 +24,17 @@ namespace ProblemDevelopmentKit.Result
         /// </summary>
         public List<double> Values { get; private set; }
 
+        /// <summary>
+        /// Create new VisualResultItem.
+        /// </summary>
         public VisualResultItem() : this(string.Empty, new List<double>(), new List<double>()) { }
 
+        /// <summary>
+        /// Create new VisualResultItem with given title, keys and values.
+        /// </summary>
+        /// <param name="title">Title.</param>
+        /// <param name="keys">Keys.</param>
+        /// <param name="values">Values.</param>
         public VisualResultItem(string title, IEnumerable<double> keys, IEnumerable<double> values)
         {
             Title = title;

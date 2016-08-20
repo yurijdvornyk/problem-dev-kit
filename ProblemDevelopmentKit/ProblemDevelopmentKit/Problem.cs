@@ -37,7 +37,27 @@ namespace ProblemDevelopmentKit
             }
         }
 
-        public bool IsCancellationPending { get; private set; }
+        public bool IsCancellationPending
+        {
+            get
+            {
+                if (backgroundWorker != null)
+                {
+                    return backgroundWorker.CancellationPending;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            private set
+            {
+                if (backgroundWorker != null && value)
+                {
+                    backgroundWorker.CancelAsync();
+                }
+            }
+        }
 
         private BackgroundWorker backgroundWorker;
 
@@ -48,7 +68,7 @@ namespace ProblemDevelopmentKit
 
         public abstract void ParseData();
 
-        public abstract ProblemResult Execute();
+        public abstract ProblemResult Execute(DoWorkEventArgs args);
 
         public void SetInputData(List<object> inputData)
         {
@@ -71,7 +91,20 @@ namespace ProblemDevelopmentKit
         {
             if (IsInputDataSet)
             {
-                Result = Execute();
+                Result = Execute(null);
+                return Result;
+            }
+            else
+            {
+                throw new ArgumentException("Input data not set.");
+            }
+        }
+
+        public ProblemResult Solve(DoWorkEventArgs args)
+        {
+            if (IsInputDataSet)
+            {
+                Result = Execute(args);
                 return Result;
             }
             else
@@ -86,20 +119,24 @@ namespace ProblemDevelopmentKit
             backgroundWorker.WorkerSupportsCancellation = true;
             backgroundWorker.DoWork += backgroundWorker_DoWork;
             backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
-            IsCancellationPending = false;
             backgroundWorker.RunWorkerAsync();
         }
 
         public void CancelAsyncSolution()
         {
             IsCancellationPending = true;
-            if (backgroundWorker != null)
+        }
+
+        public bool CheckSolutionStatus(DoWorkEventArgs args)
+        {
+            if (IsCancellationPending)
             {
-                backgroundWorker.CancelAsync();
+                args.Cancel = true;
+                return false;
             }
             else
             {
-                throw new NullReferenceException("BackgroundWorker is not initialized.");
+                return true;
             }
         }
 
@@ -110,7 +147,8 @@ namespace ProblemDevelopmentKit
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = Solve();
+            SolutionProgressNotifier.StartSolution();
+            Solve(e);
         }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

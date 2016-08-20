@@ -37,10 +37,23 @@
             this(string.Empty, string.Empty, new TableResult(), new VisualResult())
         { }
 
+        /// <summary>
+        /// Construct ProblemResult instance from given tableValues and visualValues.
+        /// </summary>
+        /// <param name="tableValues">TableResult.</param>
+        /// <param name="visualValues">VisualResult.</param>
         public ProblemResult(TableResult tableValues, VisualResult visualValues) :
             this(string.Empty, string.Empty, tableValues, visualValues)
         { }
 
+        /// <summary>
+        /// Construct ProblemResult instance from given visualTableKey, visualTitleValue, visualValues, visualValues and comments.
+        /// </summary>
+        /// <param name="visualTitleKey">VisualTitleKey.</param>
+        /// <param name="visualTitleValue">VisualTitleValue.</param>
+        /// <param name="tableValues">TableResult.</param>
+        /// <param name="visualValues">VisualResult.</param>
+        /// <param name="comments">Commenyts.</param>
         public ProblemResult(
             string visualTitleKey,
             string visualTitleValue,
